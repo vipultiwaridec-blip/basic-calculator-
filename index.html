@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A clean, accessible calculator for everyday arithmetic.">
+  <title>Orbit Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="calculator" aria-label="Calculator">
+      <header class="calculator-header">
+        <div>
+          <p class="eyebrow">ORBIT / BASIC MATH</p>
+          <h1>Calculator</h1>
+        </div>
+        <span class="status-dot" aria-label="Ready"></span>
+      </header>
+
+      <section class="screen" aria-live="polite" aria-atomic="true">
+        <p class="screen-label">LIVE RESULT</p>
+        <p id="expression" class="expression" aria-label="Current expression">0</p>
+        <output id="result" class="result" aria-label="Result">0</output>
+      </section>
+
+      <section class="keypad" aria-label="Calculator keys">
+        <button class="key key-muted" data-action="clear" type="button">C</button>
+        <button class="key key-muted" data-action="backspace" type="button" aria-label="Delete last character">DEL</button>
+        <button class="key key-muted" data-value="%" type="button">%</button>
+        <button class="key key-operator" data-value="/" type="button" aria-label="Divide">÷</button>
+
+        <button class="key" data-value="7" type="button">7</button>
+        <button class="key" data-value="8" type="button">8</button>
+        <button class="key" data-value="9" type="button">9</button>
+        <button class="key key-operator" data-value="*" type="button" aria-label="Multiply">×</button>
+
+        <button class="key" data-value="4" type="button">4</button>
+        <button class="key" data-value="5" type="button">5</button>
+        <button class="key" data-value="6" type="button">6</button>
+        <button class="key key-operator" data-value="-" type="button" aria-label="Subtract">−</button>
+
+        <button class="key" data-value="1" type="button">1</button>
+        <button class="key" data-value="2" type="button">2</button>
+        <button class="key" data-value="3" type="button">3</button>
+        <button class="key key-operator" data-value="+" type="button" aria-label="Add">+</button>
+
+        <button class="key key-muted" data-action="toggle-sign" type="button" aria-label="Toggle positive or negative">±</button>
+        <button class="key" data-value="0" type="button">0</button>
+        <button class="key" data-value="." type="button">.</button>
+        <button class="key key-equals" data-action="equals" type="button">=</button>
+      </section>
+
+      <p class="keyboard-hint">Keyboard ready · Enter to calculate · Esc to clear</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

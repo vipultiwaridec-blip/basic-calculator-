@@ -1,0 +1,88 @@
+:root {
+  --ink: #1e2433;
+  --muted: #7c8494;
+  --surface: #fbfaf7;
+  --surface-soft: #f1f0ed;
+  --line: #e5e3df;
+  --accent: #df6547;
+  --accent-dark: #be4930;
+  --accent-soft: #f7ddd5;
+  --shadow: 0 28px 70px rgba(70, 48, 38, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+  background: #e7eceb;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.7), transparent 50%), linear-gradient(35deg, #dce5e2 0 42%, #f4e8dc 42% 68%, #cbdad8 68%);
+}
+
+button { font: inherit; }
+
+.app-shell {
+  display: grid;
+  min-height: 100vh;
+  padding: clamp(20px, 5vw, 64px);
+  place-items: center;
+}
+
+.calculator {
+  width: min(100%, 430px);
+  padding: clamp(22px, 5vw, 34px);
+  background: rgba(251, 250, 247, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  animation: arrive 500ms ease-out both;
+}
+
+.calculator-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.eyebrow, .screen-label, .keyboard-hint {
+  margin: 0;
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+h1 { margin: 7px 0 0; font-size: clamp(1.7rem, 5vw, 2.15rem); line-height: 1; letter-spacing: -0.06em; }
+.status-dot { width: 10px; height: 10px; margin-top: 7px; background: #72a77d; border-radius: 50%; box-shadow: 0 0 0 5px #e6f0e8; }
+
+.screen {
+  min-height: 142px;
+  padding: 20px 22px;
+  overflow: hidden;
+  text-align: right;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.expression { min-height: 1.4em; margin: 14px 0 2px; color: var(--muted); font-family: "DM Mono", monospace; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.result { display: block; color: var(--ink); font-family: "DM Mono", monospace; font-size: clamp(2rem, 8vw, 2.9rem); font-weight: 500; letter-spacing: -0.08em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 11px; margin-top: 18px; }
+.key { min-height: 62px; padding: 0; color: var(--ink); cursor: pointer; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 3px 0 #e6e3de; font-size: 1.1rem; font-weight: 700; transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease; }
+.key:hover { background: #fffaf5; }
+.key:active, .key.is-pressed { transform: translateY(3px); box-shadow: none; }
+.key:focus-visible { outline: 3px solid rgba(223, 101, 71, 0.35); outline-offset: 2px; }
+.key-muted { color: var(--muted); background: #f5f4f1; box-shadow: 0 3px 0 #e2e0db; }
+.key-operator { color: var(--accent-dark); background: var(--accent-soft); border-color: #f2c9bd; box-shadow: 0 3px 0 #e8c1b5; }
+.key-equals { color: #fff; background: var(--accent); border-color: var(--accent); box-shadow: 0 3px 0 var(--accent-dark); }
+.key-equals:hover { background: var(--accent-dark); }
+.keyboard-hint { margin-top: 21px; text-align: center; font-size: 0.61rem; letter-spacing: 0.03em; }
+
+@keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 390px) { .calculator { padding: 18px; border-radius: 20px; } .key { min-height: 56px; } .keypad { gap: 8px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
